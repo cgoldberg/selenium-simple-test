@@ -138,6 +138,11 @@ class FirefoxBinary(firefox_binary.FirefoxBinary):
             command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
             env=self._firefox_env)
 
+    def _get_firefox_output(self):
+        # since Selenium 2.44, there is no more _get_firefox_output() method
+        # available in a FirefoxBinary class
+        return self.process.communicate()[0]
+
     def _wait_until_connectable(self):
         """Blocks until the extension is connectable in the firefox.
 
